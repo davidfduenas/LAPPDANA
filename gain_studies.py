@@ -20,7 +20,7 @@ Events with no pulse above threshold are left out. The reported gain is the
 mean over the remaining pulses.
 
 Threshold = 5 x RMS noise, from the pedestal file made by
-    python drs4_analysis.py --pedestal --lappd NAME laser_blocked.xml
+    python waveformana.py --pedestal --lappd NAME laser_blocked.xml
 
 Usage:
     python gain_studies.py run.xml --lappd 189 --channel CHN1 --window 30 40
@@ -87,7 +87,7 @@ def load_pedestal(lappd_name):
             lines = f.readlines()
     except FileNotFoundError:
         print(f"No {path} found. Make it first with:\n"
-              f"  python drs4_analysis.py --pedestal --lappd {lappd_name} laser_blocked.xml")
+              f"  python waveformana.py --pedestal --lappd {lappd_name} laser_blocked.xml")
         sys.exit(1)
     return float(lines[0]), float(lines[1])
 

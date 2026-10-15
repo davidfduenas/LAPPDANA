@@ -13,7 +13,7 @@ of the baseline-subtracted waveform (positive_signal()). Negative samples
 never contribute to hit finding, amplitude, charge, peak finding, or the
 centroid weights.
 
-NOTE: the pedestal calibration (drs4_analysis.py --pedestal) must NOT be
+NOTE: the pedestal calibration (waveformana.py --pedestal) must NOT be
 clipped — baseline and RMS need both signs of the noise. Clipping only
 happens here, after baseline subtraction.
 
@@ -696,7 +696,7 @@ if __name__ == "__main__":
         baseline_mean = float(lines[0])
         rms_noise = float(lines[1])
     except FileNotFoundError:
-        print(f"No {pedestal_path} found. Run drs4_analysis.py --pedestal --lappd {args.lappd} "
+        print(f"No {pedestal_path} found. Run waveformana.py --pedestal --lappd {args.lappd} "
               f"on a laser-blocked {args.lappd_channel} file first (with --channel {args.lappd_channel}).")
         sys.exit(1)
     threshold = 5 * rms_noise
